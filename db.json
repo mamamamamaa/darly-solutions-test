@@ -1,0 +1,15 @@
+{
+  "friends": [
+    {
+      "id": 13,
+      "friendInfo": {
+        "name": "Maxi",
+        "age": 18,
+        "phoneNumber": "+380951624396",
+        "email": "qwerty@mail.com",
+        "about": "Just my best friend",
+        "dream":"Peace in the world"
+      }
+    }
+  ]
+}
