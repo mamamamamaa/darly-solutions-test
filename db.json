@@ -1,14 +1,13 @@
 {
-  "friends": [
+  "feedback": [
     {
-      "id": 13,
-      "friendInfo": {
-        "name": "Maxi",
-        "age": 18,
+      "id": "13",
+      "user": {
+        "firstName": "Maxi",
+        "secondName": "Denik",
         "phoneNumber": "+380951624396",
         "email": "qwerty@mail.com",
-        "about": "Just my best friend",
-        "dream":"Peace in the world"
+        "message": "Glory to Ukraine!!!"
       }
     }
   ]

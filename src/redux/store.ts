@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { friendsReducer } from "./friendsSlice";
+import { feedbackReducer } from "./friendsSlice";
 
 export const store = configureStore({
   reducer: {
-    friends: friendsReducer,
+    friends: feedbackReducer,
   },
 });
 

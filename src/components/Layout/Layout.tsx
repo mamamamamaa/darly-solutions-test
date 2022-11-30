@@ -1,11 +1,17 @@
-import { FC, ReactNode } from "react";
-import { Header } from "../Header/Header";
-import { Footer } from "../Footer/Footer";
+import { FC, Suspense } from "react";
+import { Header, Footer } from "../index";
+import { Outlet } from "react-router-dom";
 
-export const Layout: FC<{ children: ReactNode }> = ({ children }) => {
+export const Layout: FC = () => {
   return (
-    <>
-      <Header></Header> <main>{children}</main> <Footer></Footer>{" "}
-    </>
+    <div className="flex flex-col min-h-screen h-full bg-slate-50">
+      <Header />
+      <main className="flex-grow">
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+      </main>
+      <Footer />
+    </div>
   );
 };

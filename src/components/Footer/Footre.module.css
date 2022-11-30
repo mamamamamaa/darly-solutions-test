@@ -1,0 +1,11 @@
+.footer{
+    @apply border-t-2 border-slate-200 py-6
+}
+
+.footerContainer{
+    @apply container flex items-center justify-center
+}
+
+.paragraph{
+    @apply text-base font-light text-gray-700 leading-6
+}

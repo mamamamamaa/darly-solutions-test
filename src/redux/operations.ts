@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IFriend } from "./friendsSlice";
+import { IFeedback } from "./friendsSlice";
 
-const BASE_URL = "http://localhost:3000/friends/";
+const BASE_URL = "http://localhost:3000/feedback/";
 
-export const fetchFriends = createAsyncThunk<
-  IFriend[],
+export const fetchFeedback = createAsyncThunk<
+  IFeedback[],
   undefined,
   { rejectValue: string }
->("friends/fetchFriends", async (_, thunkAPI) => {
+>("feedback/fetchFeedback", async (_, thunkAPI) => {
   const response = await fetch(`${BASE_URL}`);
 
   if (!response.ok) {
@@ -17,11 +17,11 @@ export const fetchFriends = createAsyncThunk<
   return await response.json();
 });
 
-export const addFriend = createAsyncThunk<
-  IFriend,
-  IFriend,
+export const addFeedback = createAsyncThunk<
+  IFeedback,
+  IFeedback,
   { rejectValue: string }
->("friends/addFriend", async (data, thunkAPI) => {
+>("feedback/addFeedback", async (data, thunkAPI) => {
   const options = {
     method: "POST",
     body: JSON.stringify(data),
@@ -39,12 +39,12 @@ export const addFriend = createAsyncThunk<
   return await response.json();
 });
 
-export const deleteFriend = createAsyncThunk<
-  IFriend,
+export const deleteFeedback = createAsyncThunk<
+  IFeedback,
   string,
   { rejectValue: string }
->("friends/deleteFriend", async (friendId, thunkAPI) => {
-  const response = await fetch(`${BASE_URL}/${friendId}`, {
+>("feedback/deleteFeedback", async (feedbackId, thunkAPI) => {
+  const response = await fetch(`${BASE_URL}/${feedbackId}`, {
     method: "DELETE",
   });
 

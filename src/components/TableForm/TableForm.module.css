@@ -1,0 +1,23 @@
+
+.formHeader{
+    @apply font-bold uppercase text-5xl;
+}
+
+.form{
+    @apply w-full p-8 mx-auto my-10 md:px-12 lg:w-9/12 lg:pl-20 lg:pr-40 mr-auto rounded-2xl shadow-2xl;
+}
+
+.inputContainer{
+    @apply grid grid-cols-1 gap-5 md:grid-cols-2 mt-5;
+}
+.formInput{
+    @apply w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:drop-shadow-md;
+}
+
+.textarea{
+    @apply w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:drop-shadow-md;
+}
+
+.submitBtn{
+    @apply uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:drop-shadow-md;
+}

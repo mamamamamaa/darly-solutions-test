@@ -1,47 +1,50 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { fetchFriends, deleteFriend, addFriend } from "./operations";
+import { fetchFeedback, deleteFeedback, addFeedback } from "./operations";
 
-export interface IFriend {
+export interface IFeedback {
   id: string;
-  friendInfo: {
-    name: string;
-    age: number;
+  user: {
+    firstName: string;
+    secondName: string;
     phoneNumber: string;
     email: string;
-    about: string;
-    dream: string;
+    message: string;
   };
 }
 
-interface FriendsSlice {
-  data: IFriend[];
+interface IFeedbackSlice {
+  data: IFeedback[];
   isLoading: boolean;
   error: string | undefined;
 }
 
-const initialState: FriendsSlice = {
+const initialState: IFeedbackSlice = {
   data: [],
   isLoading: false,
   error: undefined,
 };
 
-const friendsSlice = createSlice({
-  name: "friends",
+const feedbackSlice = createSlice({
+  name: "feedback",
   initialState,
   reducers: {},
   extraReducers: (builder) =>
     builder
-      .addCase(fetchFriends.fulfilled, (state, action) => {
+      .addCase(fetchFeedback.fulfilled, (state, action) => {
         state.data = action.payload;
       })
-      .addCase(addFriend.fulfilled, (state, action) => {
+      .addCase(addFeedback.fulfilled, (state, action) => {
         state.data.push(action.payload);
       })
-      .addCase(deleteFriend.fulfilled, (state, action) => {
+      .addCase(deleteFeedback.fulfilled, (state, action) => {
         state.data = state.data.filter(({ id }) => action.payload.id !== id);
       })
       .addMatcher(
-        isAnyOf(fetchFriends.pending, addFriend.pending, deleteFriend.pending),
+        isAnyOf(
+          fetchFeedback.pending,
+          addFeedback.pending,
+          deleteFeedback.pending
+        ),
         (state) => {
           state.isLoading = true;
           state.error = undefined;
@@ -49,9 +52,9 @@ const friendsSlice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          fetchFriends.rejected,
-          addFriend.rejected,
-          deleteFriend.rejected
+          fetchFeedback.rejected,
+          addFeedback.rejected,
+          deleteFeedback.rejected
         ),
         (state, action) => {
           state.isLoading = false;
@@ -60,9 +63,9 @@ const friendsSlice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          fetchFriends.fulfilled,
-          addFriend.fulfilled,
-          deleteFriend.fulfilled
+          fetchFeedback.fulfilled,
+          addFeedback.fulfilled,
+          deleteFeedback.fulfilled
         ),
         (state) => {
           state.isLoading = false;
@@ -71,4 +74,4 @@ const friendsSlice = createSlice({
       ),
 });
 
-export const friendsReducer = friendsSlice.reducer;
+export const feedbackReducer = feedbackSlice.reducer;
