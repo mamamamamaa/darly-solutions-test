@@ -5,7 +5,7 @@ export interface IFeedback {
   id: string;
   user: {
     firstName: string;
-    secondName: string;
+    lastName: string;
     phoneNumber: string;
     email: string;
     message: string;

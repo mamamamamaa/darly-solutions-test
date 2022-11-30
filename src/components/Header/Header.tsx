@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 const menu = [
   { id: "home", name: "Home", path: "/" },
@@ -11,7 +12,9 @@ export const Header: FC = () => {
   return (
     <header className="py-5 px-10 shadow">
       <div className="container flex items-center justify-between">
-        <p className="text-4xl font-black">ma friends</p>
+        <p className="text-4xl font-black uppercase">feedback</p>
+
+        <Toaster position="top-center" reverseOrder={false} />
 
         <nav className="lg:text-lg">
           <ul className="mx-auto flex items-center gap-14">

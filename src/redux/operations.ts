@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IFeedback } from "./friendsSlice";
+import toast from "react-hot-toast";
 
 const BASE_URL = "http://localhost:3000/feedback/";
 
@@ -31,10 +32,11 @@ export const addFeedback = createAsyncThunk<
   };
 
   const response = await fetch(`${BASE_URL}`, options);
-
   if (!response.ok) {
+    toast.error("Something went wrong");
     return thunkAPI.rejectWithValue("Server error");
   }
+  toast.success("Success!!!");
 
   return await response.json();
 });

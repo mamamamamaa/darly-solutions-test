@@ -3,7 +3,7 @@ import { feedbackReducer } from "./friendsSlice";
 
 export const store = configureStore({
   reducer: {
-    friends: feedbackReducer,
+    feedbacks: feedbackReducer,
   },
 });
 
