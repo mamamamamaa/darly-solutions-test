@@ -24,6 +24,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
+    "server": "npx json-server --watch db.json",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

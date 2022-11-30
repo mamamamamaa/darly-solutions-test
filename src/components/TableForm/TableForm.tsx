@@ -66,9 +66,7 @@ export const TableForm: FC = () => {
       <div className={style.inputContainer}>
         <label className="relative">
           {errors.firstName && (
-            <span className="absolute top-[-15px] text-red-800">
-              {errors?.firstName?.message}
-            </span>
+            <span className={style.error}>{errors?.firstName?.message}</span>
           )}
           <input
             className={style.formInput}
@@ -78,9 +76,7 @@ export const TableForm: FC = () => {
         </label>
         <label className="relative">
           {errors.lastName && (
-            <span className="absolute top-[-15px] text-red-800">
-              {errors?.lastName?.message}
-            </span>
+            <span className={style.error}>{errors?.lastName?.message}</span>
           )}
           <input
             className={style.formInput}
@@ -92,9 +88,7 @@ export const TableForm: FC = () => {
         </label>
         <label className="relative">
           {errors.email && (
-            <span className="absolute top-[-15px] text-red-800">
-              {errors?.email?.message}
-            </span>
+            <span className={style.error}>{errors?.email?.message}</span>
           )}
           <input
             className={style.formInput}
@@ -104,9 +98,7 @@ export const TableForm: FC = () => {
         </label>
         <label className="relative">
           {errors.phoneNumber && (
-            <span className="absolute top-[-15px] text-red-800">
-              {errors?.phoneNumber?.message}
-            </span>
+            <span className={style.error}>{errors?.phoneNumber?.message}</span>
           )}
           <input
             className={style.formInput}
@@ -119,9 +111,7 @@ export const TableForm: FC = () => {
       </div>
       <div className="my-4 relative">
         {errors.message && (
-          <span className="absolute top-[-15px] text-red-800">
-            {errors?.message?.message}
-          </span>
+          <span className={style.error}>{errors?.message?.message}</span>
         )}
         <textarea
           placeholder="Message*"

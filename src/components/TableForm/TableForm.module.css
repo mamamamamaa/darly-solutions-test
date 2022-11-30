@@ -21,3 +21,7 @@
 .submitBtn{
     @apply uppercase text-sm font-bold cursor-pointer tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:drop-shadow-md disabled:bg-blue-200 disabled:cursor-default;
 }
+
+.error{
+    @apply absolute top-[-15px] text-red-800;
+}
