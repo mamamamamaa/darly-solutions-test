@@ -1,11 +1,6 @@
-import {
-  FC,
-  MouseEventHandler,
-  ReactNode,
-  SyntheticEvent,
-  useEffect,
-} from "react";
+import { FC, ReactNode, SyntheticEvent, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { CLoseButton } from "../Buttons/CLoseButton";
 
 type Props = {
   children: ReactNode;
@@ -15,7 +10,7 @@ type Props = {
 export const Modal: FC<Props> = ({ children, onClose }) => {
   const modalRoot = document.querySelector("#modal-root") as HTMLDivElement;
 
-  const onBackdropClose = (event: MouseEvent) => {
+  const onBackdropClose = (event: SyntheticEvent<HTMLDivElement>) => {
     if (event.currentTarget === event.target) {
       onClose();
     }
@@ -25,6 +20,7 @@ export const Modal: FC<Props> = ({ children, onClose }) => {
     const onEscapeClose = (event: KeyboardEvent) => {
       if (event.code === "Escape") {
         onClose();
+        console.log("im close");
       }
     };
     window.addEventListener("keydown", onEscapeClose);
@@ -35,11 +31,13 @@ export const Modal: FC<Props> = ({ children, onClose }) => {
 
   return createPortal(
     <div
-      // need to fix it
-      // onClick={onBackdropClose}
-      className="w-screen h-screen backdrop-blur-sm"
+      onClick={onBackdropClose}
+      className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center z-30 backdrop-blur-sm"
     >
-      <div>{children}</div>
+      <div className="relative bg-white h-56 w-64 flex p-10 items-center justify-center rounded-2xl shadow-2xl">
+        <CLoseButton onClose={onClose} />
+        {children}
+      </div>
     </div>,
     modalRoot
   );

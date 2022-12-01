@@ -4,9 +4,10 @@ import { FC } from "react";
 
 type Props = {
   feedback: IFeedback[];
+  onOpen: Function;
 };
 
-export const TableBody: FC<Props> = ({ feedback }) => {
+export const TableBody: FC<Props> = ({ feedback, onOpen }) => {
   return (
     <tbody>
       {feedback.length > 0 &&
@@ -20,7 +21,15 @@ export const TableBody: FC<Props> = ({ feedback }) => {
             <td className={style.td}>
               <a href={`tel:${user.phoneNumber}`}>{user.phoneNumber}</a>{" "}
             </td>
-            <td className={style.td}>Show message</td>
+            <td className={style.td}>
+              <button
+                onClick={() => onOpen(user.message)}
+                className="px-5 py-2.5 bg-gray-200 rounded-2xl"
+                type="button"
+              >
+                Show message
+              </button>
+            </td>
           </tr>
         ))}
     </tbody>
