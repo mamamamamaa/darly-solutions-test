@@ -11,7 +11,7 @@ const menu = [
 export const Header: FC = () => {
   return (
     <header className="py-5 px-10 shadow">
-      <div className="container flex items-center justify-between">
+      <div className="container mx-auto flex items-center justify-between">
         <p className="text-4xl font-black uppercase">feedback</p>
 
         <Toaster position="top-center" reverseOrder={false} />

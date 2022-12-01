@@ -1,16 +1,18 @@
 import { FC } from "react";
+import style from "./ButtonStyle.module.css";
 
 type Props = {
-  onClose: Function;
+  onDelete: Function;
+  param: string;
 };
 
-export const CLoseButton: FC<Props> = ({ onClose }) => {
+export const DeleteButton: FC<Props> = ({ onDelete, param }) => {
   return (
     <button
-      onClick={() => onClose()}
-      type="button"
-      className="absolute top-1 right-1 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
+      onClick={() => onDelete(param)}
+      className={style.deleteButton}
       data-modal-toggle="staticModal"
+      type="button"
     >
       <svg
         className="w-5 h-5"

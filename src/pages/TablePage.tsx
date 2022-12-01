@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { Table } from "../components/Table/Table";
+import { Table } from "../components";
 
 export const TablePage: FC = () => {
   return (
-    <div>
+    <section>
       <Table />
-    </div>
+    </section>
   );
 };

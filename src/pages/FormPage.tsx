@@ -3,8 +3,8 @@ import { FC } from "react";
 
 export const FormPage: FC = () => {
   return (
-    <div className="h-full">
+    <section className="h-full">
       <TableForm />
-    </div>
+    </section>
   );
 };

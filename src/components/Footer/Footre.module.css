@@ -1,5 +1,5 @@
 .footer{
-    @apply border-t-2 border-slate-200 py-6
+    @apply container mx-auto border-t-2 border-slate-200 py-6
 }
 
 .footerContainer{

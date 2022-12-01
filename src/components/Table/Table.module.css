@@ -1,5 +1,5 @@
 .tableContainer{
-    @apply overflow-x-auto h-[70vh] scroll-auto mx-20 my-10 shadow-2xl relative rounded-lg;
+    @apply overflow-x-auto max-h-[70vh] scroll-auto mx-20 my-10 shadow-2xl relative rounded-lg;
 }
 
 .table{
@@ -20,5 +20,13 @@
 
 .td{
     @apply py-4 px-6;
+}
+
+.modalButton{
+    @apply px-5 py-2.5 bg-gray-200 rounded-2xl;
+}
+
+.skeletonTd{
+    @apply bg-neutral-500 h-8 rounded-2xl;
 }
 

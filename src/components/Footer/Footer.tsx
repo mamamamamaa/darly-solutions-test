@@ -5,7 +5,9 @@ export const Footer: FC = () => {
   return (
     <footer className={style.footer}>
       <div className={style.footerContainer}>
-        <p className={style.paragraph}>© {new Date().getFullYear()}</p>
+        <p className={style.paragraph}>
+          © {new Date().getFullYear()} by <b>Maxix</b>{" "}
+        </p>
       </div>
     </footer>
   );

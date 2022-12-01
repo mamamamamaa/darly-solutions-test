@@ -1,13 +1,16 @@
 import style from "./Table.module.css";
 import { IFeedback } from "../../redux";
 import { FC } from "react";
+import { DeleteButton } from "../Buttons/DeleteButton";
+import { ModalButton } from "../Buttons/ModalButton";
 
 type Props = {
   feedback: IFeedback[];
   onOpen: Function;
+  onDelete: Function;
 };
 
-export const TableBody: FC<Props> = ({ feedback, onOpen }) => {
+export const TableBody: FC<Props> = ({ feedback, onOpen, onDelete }) => {
   return (
     <tbody>
       {feedback.length > 0 &&
@@ -22,13 +25,14 @@ export const TableBody: FC<Props> = ({ feedback, onOpen }) => {
               <a href={`tel:${user.phoneNumber}`}>{user.phoneNumber}</a>{" "}
             </td>
             <td className={style.td}>
-              <button
-                onClick={() => onOpen(user.message)}
-                className="px-5 py-2.5 bg-gray-200 rounded-2xl"
-                type="button"
-              >
-                Show message
-              </button>
+              <ModalButton
+                callback={onOpen}
+                text={"Show message"}
+                param={user.message}
+              />
+            </td>
+            <td className={style.td}>
+              <DeleteButton onDelete={onDelete} param={id} />
             </td>
           </tr>
         ))}

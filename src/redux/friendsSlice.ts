@@ -37,7 +37,7 @@ const feedbackSlice = createSlice({
         state.data.push(action.payload);
       })
       .addCase(deleteFeedback.fulfilled, (state, action) => {
-        state.data = state.data.filter(({ id }) => action.payload.id !== id);
+        state.data = state.data.filter(({ id }) => action.meta.arg !== id);
       })
       .addMatcher(
         isAnyOf(

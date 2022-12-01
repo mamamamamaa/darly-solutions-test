@@ -1,0 +1,9 @@
+.deleteButton{
+    @apply text-gray-400 bg-transparent hover:bg-gray-200 hover:text-red-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center;
+}
+.closeButton{
+    @apply absolute top-1 right-1 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center;
+}
+.modalButton{
+    @apply px-5 py-2.5 bg-gray-200 rounded-2xl;
+}

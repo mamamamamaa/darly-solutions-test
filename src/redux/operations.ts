@@ -12,6 +12,7 @@ export const fetchFeedback = createAsyncThunk<
   const response = await fetch(`${BASE_URL}`);
 
   if (!response.ok) {
+    toast.error("We can't load table data :(");
     return thunkAPI.rejectWithValue("Server error");
   }
 
