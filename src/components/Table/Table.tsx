@@ -27,9 +27,7 @@ export const Table: FC = () => {
 
   const handleToggleModal = (message: ReactNode) => setMessage(message);
   const handleDelete = (id: string) => dispatch(deleteFeedback(id));
-  const uploadData = () => {
-    dispatch(fetchFeedback(currentPage));
-  };
+  const uploadData = () => dispatch(fetchFeedback(currentPage));
 
   const scrollHandler = (event: React.UIEvent<HTMLDivElement>) => {
     const windowHeight = window.innerHeight;
@@ -41,7 +39,6 @@ export const Table: FC = () => {
       feedback.length < totalCount &&
       !isLoading
     ) {
-      console.log("load");
       uploadData();
     }
   };
