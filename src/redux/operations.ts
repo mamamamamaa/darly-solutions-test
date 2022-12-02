@@ -4,20 +4,42 @@ import toast from "react-hot-toast";
 
 const BASE_URL = "http://localhost:1234/feedback/";
 
+const PAGE_LIMIT = 10;
+
 export const fetchFeedback = createAsyncThunk<
-  IFeedback[],
-  undefined,
+  { data: IFeedback[]; totalCount: any },
+  number,
   { rejectValue: string }
->("feedback/fetchFeedback", async (_, thunkAPI) => {
-  const response = await fetch(`${BASE_URL}`);
+>("feedback/fetchFeedback", async (page, thunkAPI) => {
+  const response = await fetch(
+    `${BASE_URL}?_page=${page}&_limit=${PAGE_LIMIT}`
+  );
 
   if (!response.ok) {
     toast.error("We can't load table data :(");
     return thunkAPI.rejectWithValue("Server error");
   }
 
-  return await response.json();
+  return {
+    data: await response.json(),
+    totalCount: response.headers.get("X-Total-Count"),
+  };
 });
+
+// export const fetchFeedback = createAsyncThunk<
+//   IFeedback[],
+//   undefined,
+//   { rejectValue: string }
+// >("feedback/fetchFeedback", async (_, thunkAPI) => {
+//   const response = await fetch(`${BASE_URL}`);
+//
+//   if (!response.ok) {
+//     toast.error("We can't load table data :(");
+//     return thunkAPI.rejectWithValue("Server error");
+//   }
+//
+//   return await response.json();
+// });
 
 export const addFeedback = createAsyncThunk<
   IFeedback,

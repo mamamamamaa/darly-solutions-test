@@ -1,10 +1,16 @@
 import style from "./Table.module.css";
-import { deleteFeedback, useAppDispatch, useFeedback } from "../../redux";
+import {
+  deleteFeedback,
+  fetchFeedback,
+  useAppDispatch,
+  useFeedback,
+} from "../../redux";
 import { TableHead } from "./TableHead";
 import { TableBody } from "./TableBody";
 import React, { FC, ReactNode, useState } from "react";
 import { Modal } from "../Modal/Modal";
-import { SkeletonTableRow } from "./SkeletonTableRow";
+import { Loader } from "../Loader/Loader";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const tableHeaders: ReadonlyArray<string> = [
   "First name",
@@ -19,11 +25,23 @@ export const Table: FC = () => {
   const [message, setMessage] = useState<ReactNode>();
 
   const dispatch = useAppDispatch();
-  const { feedback, isLoading } = useFeedback();
+  const { feedback, isLoading, currentPage, totalCount } = useFeedback();
 
   const handleToggleModal = (message: ReactNode) => setMessage(message);
   const handleDelete = (id: string) => dispatch(deleteFeedback(id));
 
+  // const scrollHandler = (event: React.UIEvent<HTMLDivElement>) => {
+  //   const windowHeight = window.innerHeight;
+  //   const scrollHeight = event.currentTarget.scrollHeight;
+  //   const scrollTop = event.currentTarget.scrollTop;
+  //
+  //   if (
+  //     scrollHeight - (scrollTop + windowHeight) < 10 &&
+  //     feedback.length < totalCount
+  //   ) {
+  //     dispatch(fetchFeedback(currentPage));
+  //   }
+  // };
   return (
     <>
       {feedback.length === 0 && (
@@ -31,20 +49,29 @@ export const Table: FC = () => {
       )}
 
       {feedback.length > 0 && (
-        <div className={style.tableContainer}>
-          <table className={style.table}>
-            <TableHead headers={tableHeaders} />
-            {isLoading && <SkeletonTableRow headers={tableHeaders} />}
-            {!isLoading && (
-              <TableBody
-                feedback={feedback}
-                onOpen={handleToggleModal}
-                onDelete={handleDelete}
-              />
-            )}
-          </table>
-          {message && <Modal onClose={handleToggleModal}>{message}</Modal>}
-        </div>
+        <>
+          <div className={style.tableContainer}>
+            <InfiniteScroll
+              dataLength={totalCount}
+              next={() => dispatch(fetchFeedback(currentPage))}
+              hasMore={currentPage < totalCount / 10}
+              loader={<Loader />}
+              endMessage={<></>}
+            >
+              <table className={style.table}>
+                <TableHead headers={tableHeaders} />
+                <TableBody
+                  feedback={feedback}
+                  onOpen={handleToggleModal}
+                  onDelete={handleDelete}
+                />
+              </table>
+            </InfiniteScroll>
+            {/*)}*/}
+            {message && <Modal onClose={handleToggleModal}>{message}</Modal>}
+          </div>
+          {/*{isLoading && <Loader />}*/}
+        </>
       )}
     </>
   );

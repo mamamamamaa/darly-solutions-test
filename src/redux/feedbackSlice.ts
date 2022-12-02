@@ -14,12 +14,16 @@ export interface IFeedback {
 
 interface IFeedbackSlice {
   data: IFeedback[];
+  totalCount: number;
+  currentPage: number;
   isLoading: boolean;
   error: string | undefined;
 }
 
 const initialState: IFeedbackSlice = {
   data: [],
+  totalCount: 0,
+  currentPage: 1,
   isLoading: false,
   error: undefined,
 };
@@ -31,12 +35,17 @@ const feedbackSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(fetchFeedback.fulfilled, (state, action) => {
-        state.data = action.payload;
+        state.currentPage += 1;
+        state.totalCount = action.payload.totalCount;
+        state.data.push(...action.payload.data);
+        // state.data = action.payload;
       })
       .addCase(addFeedback.fulfilled, (state, action) => {
+        state.totalCount += 1;
         state.data.push(action.payload);
       })
       .addCase(deleteFeedback.fulfilled, (state, action) => {
+        state.totalCount -= 1;
         state.data = state.data.filter(({ id }) => action.meta.arg !== id);
       })
       .addMatcher(
