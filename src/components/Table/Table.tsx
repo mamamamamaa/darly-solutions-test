@@ -2,7 +2,7 @@ import style from "./Table.module.css";
 import { deleteFeedback, useAppDispatch, useFeedback } from "../../redux";
 import { TableHead } from "./TableHead";
 import { TableBody } from "./TableBody";
-import React, { FC, useState } from "react";
+import React, { FC, ReactNode, useState } from "react";
 import { Modal } from "../Modal/Modal";
 import { SkeletonTableRow } from "./SkeletonTableRow";
 
@@ -16,12 +16,12 @@ const tableHeaders: ReadonlyArray<string> = [
 ];
 
 export const Table: FC = () => {
-  const [message, setMessage] = useState<string>();
+  const [message, setMessage] = useState<ReactNode>();
 
   const dispatch = useAppDispatch();
   const { feedback, isLoading } = useFeedback();
 
-  const handleToggleModal = (message: string) => setMessage(message);
+  const handleToggleModal = (message: ReactNode) => setMessage(message);
   const handleDelete = (id: string) => dispatch(deleteFeedback(id));
 
   return (
