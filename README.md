@@ -6,3 +6,9 @@
 4. React-hot-toast - for pretty notifications;
 5. React-router-dom - for routing on web app;
 6. Tailwindcss - for UI;
+
+## Getting started
+
+* Firstly install all dependencies by the " npm i " script;
+* Secondly you should start the database server by " npm run server " script;
+* Thirdly and finally run the developer server by " npm start "  script;

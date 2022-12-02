@@ -2,15 +2,9 @@ import { FC } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { nanoid } from "@reduxjs/toolkit";
-import {
-  addFeedback,
-  IFeedback,
-  useAppDispatch,
-  useAppSelector,
-} from "../../redux";
+import { addFeedback, useAppDispatch } from "../../redux";
 import style from "./TableForm.module.css";
 import * as yup from "yup";
-import toast from "react-hot-toast";
 import { SubmitButton } from "../Buttons/SubmitButton";
 
 type Inputs = {
@@ -35,7 +29,8 @@ const schema = yup
   .required();
 
 export const TableForm: FC = () => {
-  const feedback = useAppSelector((state) => state.feedbacks.data);
+  const dispatch = useAppDispatch();
+
   const {
     register,
     handleSubmit,
@@ -43,16 +38,7 @@ export const TableForm: FC = () => {
     reset,
   } = useForm<Inputs>({ mode: "onBlur", resolver: yupResolver(schema) });
 
-  const dispatch = useAppDispatch();
-
-  const alreadyInData = (feedbacks: IFeedback[], newFeedback: Inputs) =>
-    feedbacks.some((feedback) => feedback.user.email === newFeedback.email);
-
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    if (alreadyInData(feedback, data)) {
-      toast.error("Feedback already in data base!");
-      return;
-    }
     dispatch(addFeedback({ id: nanoid(), user: data }));
     reset();
   };

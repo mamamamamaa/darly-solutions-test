@@ -1,26 +1,20 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IFeedback } from "./friendsSlice";
+import { IFeedback } from "./feedbackSlice";
 import toast from "react-hot-toast";
 
-const BASE_URL = "http://localhost:3000/feedback/";
-// const PAGE_LIMIT = 5;
-// let pageCounter = 1;
+const BASE_URL = "http://localhost:1234/feedback/";
 
 export const fetchFeedback = createAsyncThunk<
   IFeedback[],
   undefined,
   { rejectValue: string }
 >("feedback/fetchFeedback", async (_, thunkAPI) => {
-  // const response = await fetch(
-  //   `${BASE_URL}?_page=${pageCounter}&_limit=${PAGE_LIMIT}`
-  // );
   const response = await fetch(`${BASE_URL}`);
 
   if (!response.ok) {
     toast.error("We can't load table data :(");
     return thunkAPI.rejectWithValue("Server error");
   }
-  // pageCounter += 1;
 
   return await response.json();
 });

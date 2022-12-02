@@ -26,7 +26,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "server": "npx json-server --watch db.json",
+    "server": "npx json-server --watch db.json --port 1234",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

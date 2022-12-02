@@ -1,7 +1,7 @@
-import React, { useEffect, FC, lazy } from "react";
-import { fetchFeedback, useAppDispatch } from "../../redux";
+import React, { FC, lazy, useEffect } from "react";
 import { Layout } from "../index";
 import { Route, Routes } from "react-router-dom";
+import { fetchFeedback, useAppDispatch } from "../../redux";
 
 const HomePage = lazy(() => import("../../pages/HomePage"));
 const TablePage = lazy(() => import("../../pages/TablePage"));

@@ -9,7 +9,7 @@ type Props = {
 export const LoadMoreButton: FC<Props> = ({ text, handleLoadMore }) => {
   return (
     <button onClick={() => handleLoadMore()} className={style.loadMoreButton}>
-      Load more
+      {text}
     </button>
   );
 };

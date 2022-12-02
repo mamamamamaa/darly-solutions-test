@@ -11,11 +11,12 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter basename="/">
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>
+  // StrictMode was disabled due to a double render, i.e. a repeated request to the server
+  // <React.StrictMode>
+  <Provider store={store}>
+    <BrowserRouter basename="/">
+      <App />
+    </BrowserRouter>
+  </Provider>
+  // </React.StrictMode>
 );

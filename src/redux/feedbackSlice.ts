@@ -31,7 +31,6 @@ const feedbackSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(fetchFeedback.fulfilled, (state, action) => {
-        // state.data = [...state.data, ...action.payload];
         state.data = action.payload;
       })
       .addCase(addFeedback.fulfilled, (state, action) => {

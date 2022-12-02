@@ -1,0 +1,3 @@
+.appContainer{
+    @apply flex-grow container mx-auto py-14;
+}
