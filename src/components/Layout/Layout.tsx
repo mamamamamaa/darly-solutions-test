@@ -6,7 +6,7 @@ export const Layout: FC = () => {
   return (
     <div className="flex flex-col min-h-screen h-full bg-slate-50">
       <Header />
-      <main className="flex-grow container mx-auto">
+      <main className="flex-grow container mx-auto py-14">
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>

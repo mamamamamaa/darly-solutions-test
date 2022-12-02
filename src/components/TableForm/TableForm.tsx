@@ -11,6 +11,7 @@ import {
 import style from "./TableForm.module.css";
 import * as yup from "yup";
 import toast from "react-hot-toast";
+import { SubmitButton } from "../Buttons/SubmitButton";
 
 type Inputs = {
   firstName: string;
@@ -120,9 +121,7 @@ export const TableForm: FC = () => {
         ></textarea>
       </div>
       <div className="my-2 w-1/2 lg:w-1/4">
-        <button className={style.submitBtn} disabled={!isValid}>
-          Send Message
-        </button>
+        <SubmitButton text="Send feedback" isDisabled={isValid} />
       </div>
     </form>
   );

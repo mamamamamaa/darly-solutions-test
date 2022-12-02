@@ -1,10 +1,16 @@
 import style from "./Table.module.css";
-import { deleteFeedback, useAppDispatch, useAppSelector } from "../../redux";
+import {
+  deleteFeedback,
+  fetchFeedback,
+  useAppDispatch,
+  useAppSelector,
+} from "../../redux";
 import { TableHead } from "./TableHead";
 import { TableBody } from "./TableBody";
 import { FC, useState } from "react";
 import { Modal } from "../Modal/Modal";
 import { SkeletonTableRow } from "./SkeletonTableRow";
+import { LoadMoreButton } from "../Buttons/LoadMoreButton";
 
 const tableHeaders: ReadonlyArray<string> = [
   "First name",
@@ -23,6 +29,7 @@ export const Table: FC = () => {
 
   const handleToggleModal = (message: string) => setMessage(message);
   const handleDelete = (id: string) => dispatch(deleteFeedback(id));
+  const handleLoadMore = () => dispatch(fetchFeedback());
 
   return (
     <>
@@ -33,20 +40,23 @@ export const Table: FC = () => {
       )}
 
       {feedback.length > 0 && (
-        <div className={style.tableContainer}>
-          <table className={style.table}>
-            <TableHead headers={tableHeaders} />
-            {isLoading && <SkeletonTableRow headers={tableHeaders} />}
-            {!isLoading && (
-              <TableBody
-                feedback={feedback}
-                onOpen={handleToggleModal}
-                onDelete={handleDelete}
-              />
-            )}
-          </table>
-          {message && <Modal onClose={handleToggleModal}>{message}</Modal>}
-        </div>
+        <>
+          <div className={style.tableContainer}>
+            <table className={style.table}>
+              <TableHead headers={tableHeaders} />
+              {isLoading && <SkeletonTableRow headers={tableHeaders} />}
+              {!isLoading && (
+                <TableBody
+                  feedback={feedback}
+                  onOpen={handleToggleModal}
+                  onDelete={handleDelete}
+                />
+              )}
+            </table>
+            {message && <Modal onClose={handleToggleModal}>{message}</Modal>}
+          </div>
+          <LoadMoreButton text="Load More" handleLoadMore={handleLoadMore} />
+        </>
       )}
     </>
   );

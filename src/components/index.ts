@@ -16,3 +16,5 @@ export * from "./HomeHero/HomeHero";
 
 export * from "./Buttons/DeleteButton";
 export * from "./Buttons/CloseButton";
+export * from "./Buttons/SubmitButton";
+export * from "./Buttons/ModalButton";

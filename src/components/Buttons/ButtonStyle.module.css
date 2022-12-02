@@ -1,9 +1,15 @@
 .deleteButton{
-    @apply text-gray-400 bg-transparent hover:bg-gray-200 hover:text-red-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center;
+    @apply transition-all duration-500 text-gray-400 bg-transparent hover:bg-gray-200 hover:shadow-lg hover:text-red-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center;
 }
 .closeButton{
-    @apply absolute top-1 right-1 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center;
+    @apply transition-all duration-500 absolute top-1 right-1 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center;
 }
 .modalButton{
-    @apply px-5 py-2.5 bg-gray-200 rounded-2xl;
+    @apply transition-all duration-500 bg-gray-200 hover:shadow-lg px-4 py-2 rounded-2xl;
+}
+.submitButton{
+    @apply transition-all duration-500 uppercase text-sm font-bold cursor-pointer tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:drop-shadow-md disabled:bg-blue-200 disabled:cursor-default hover:bg-blue-600 hover:shadow-md ;
+}
+.loadMoreButton{
+    @apply transition-all duration-500 px-5 py-3 block mx-auto mt-10 bg-gray-200 hover:bg-gray-100 shadow-2xl hover:shadow-xl border-y-gray-500 rounded-2xl;
 }

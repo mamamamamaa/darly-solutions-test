@@ -1,8 +1,11 @@
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, lazy } from "react";
 import { fetchFeedback, useAppDispatch } from "../../redux";
 import { Layout } from "../index";
 import { Route, Routes } from "react-router-dom";
-import { FormPage, HomePage, TablePage } from "../../pages/";
+
+const HomePage = lazy(() => import("../../pages/HomePage"));
+const TablePage = lazy(() => import("../../pages/TablePage"));
+const FormPage = lazy(() => import("../../pages/FormPage"));
 
 export const App: FC = () => {
   const dispatch = useAppDispatch();

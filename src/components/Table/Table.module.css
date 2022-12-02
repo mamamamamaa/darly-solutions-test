@@ -1,5 +1,5 @@
 .tableContainer{
-    @apply overflow-x-auto max-h-[70vh] scroll-auto mx-20 my-10 shadow-2xl relative rounded-lg;
+    @apply overflow-x-auto max-h-[70vh] scroll-auto mx-20 shadow-2xl relative rounded-lg;
 }
 
 .table{

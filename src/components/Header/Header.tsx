@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import style from "./Header.module.css";
 
 const menu = [
   { id: "home", name: "Home", path: "/" },
@@ -21,7 +22,14 @@ export const Header: FC = () => {
             {menu &&
               menu.map(({ id, name, path }) => (
                 <li key={id}>
-                  <NavLink to={path}>{name}</NavLink>
+                  <NavLink
+                    to={path}
+                    className={({ isActive }) =>
+                      isActive ? style.activeLink : style.link
+                    }
+                  >
+                    {name}
+                  </NavLink>
                 </li>
               ))}
           </ul>

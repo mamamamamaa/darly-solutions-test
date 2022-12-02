@@ -9,11 +9,7 @@ type Props = {
 
 export const ModalButton: FC<Props> = ({ callback, text, param }) => {
   return (
-    <button
-      onClick={() => callback(param)}
-      className={style.modalButton}
-      type="button"
-    >
+    <button onClick={() => callback(param)} className={style.modalButton}>
       {text}
     </button>
   );

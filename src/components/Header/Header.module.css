@@ -1,0 +1,7 @@
+.activeLink{
+    @apply text-xl border-indigo-500 border-b-4 pointer-events-none;
+}
+
+.link{
+    @apply duration-100 text-xl hover:border-indigo-500 hover:border-b-4
+}
