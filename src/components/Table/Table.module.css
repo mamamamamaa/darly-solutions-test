@@ -1,5 +1,5 @@
 .tableContainer{
-    @apply transition-all duration-700 delay-75 overflow-x-auto  scroll-auto mx-20 shadow-2xl relative rounded-lg;
+    @apply transition-all duration-700 delay-75 overflow-x-auto max-h-[70vh] scroll-auto mx-20 shadow-2xl relative rounded-lg;
 }
 
 .table{

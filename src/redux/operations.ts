@@ -22,24 +22,9 @@ export const fetchFeedback = createAsyncThunk<
 
   return {
     data: await response.json(),
-    totalCount: response.headers.get("X-Total-Count"),
+    totalCount: Number(response.headers.get("X-Total-Count")),
   };
 });
-
-// export const fetchFeedback = createAsyncThunk<
-//   IFeedback[],
-//   undefined,
-//   { rejectValue: string }
-// >("feedback/fetchFeedback", async (_, thunkAPI) => {
-//   const response = await fetch(`${BASE_URL}`);
-//
-//   if (!response.ok) {
-//     toast.error("We can't load table data :(");
-//     return thunkAPI.rejectWithValue("Server error");
-//   }
-//
-//   return await response.json();
-// });
 
 export const addFeedback = createAsyncThunk<
   IFeedback,

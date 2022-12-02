@@ -38,7 +38,6 @@ const feedbackSlice = createSlice({
         state.currentPage += 1;
         state.totalCount = action.payload.totalCount;
         state.data.push(...action.payload.data);
-        // state.data = action.payload;
       })
       .addCase(addFeedback.fulfilled, (state, action) => {
         state.totalCount += 1;
