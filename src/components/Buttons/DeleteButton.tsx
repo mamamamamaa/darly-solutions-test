@@ -1,10 +1,10 @@
 import { FC } from "react";
 import style from "./ButtonStyle.module.css";
 
-type Props = {
+interface Props {
   onDelete: Function;
   param: string;
-};
+}
 
 export const DeleteButton: FC<Props> = ({ onDelete, param }) => {
   return (
