@@ -1,9 +1,9 @@
 import { FC } from "react";
 import style from "./ButtonStyle.module.css";
 
-type Props = {
+interface Props {
   onClose: Function;
-};
+}
 
 export const CloseButton: FC<Props> = ({ onClose }) => {
   return (
